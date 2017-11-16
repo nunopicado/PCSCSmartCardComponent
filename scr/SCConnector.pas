@@ -262,7 +262,7 @@ begin
   try
   RContext := cardinal(PContext^);
   FillChar(RStates,SizeOf(RStates),#0);
-  RStates[0].szReader     := SelectedReader;
+  RStates[0].szReader     := PAnsiChar(SelectedReader);
   RStates[0].pvUserData   := nil;
   RStates[0].dwEventState := ActReaderState;
   while ReaderOpen do
@@ -406,7 +406,7 @@ var
   RetVar : cardinal;
 begin
   RetVar := SCardConnectA(FContext,
-                          SelectedReader,
+                          PAnsiChar(SelectedReader),
                           SCARD_SHARE_EXCLUSIVE,
                           SCARD_PROTOCOL_Tx,
                           FCardHandle,
