@@ -185,7 +185,7 @@ implementation
 var
   ActReaderState  : cardinal;
   LastReaderState : cardinal;
-  SelectedReader  : PChar;
+  SelectedReader  : PAnsiChar;
   ReaderOpen      : boolean;
   NotifyHandle    : HWND;
 
@@ -492,7 +492,7 @@ begin
     CloseAndDisconnect;
     if Value < FReaderList.Count then
       begin
-      SelectedReader := PChar(FReaderList[Value]);
+      SelectedReader := PAnsiChar(FReaderList[Value]);
       FUseReaderNum   := Value;
       end else
       begin
@@ -515,7 +515,7 @@ end;
 procedure TPCSCConnector.GetReaderAttributes;
 var
   RetVar : cardinal;
-  ABuf   : string;
+  ABuf   : AnsiString;
   AIBuf  : integer;
   ALen   : integer;
 begin
@@ -583,9 +583,9 @@ end;
 function TPCSCConnector.GetResponseFromCard(const APdu: string): string;
 var
   RetVar : cardinal;
-  SBuf   : string;
+  SBuf   : AnsiString;
   SLen   : cardinal;
-  RBuf   : string;
+  RBuf   : AnsiString;
   RLen   : cardinal;
   Ppci   : Pointer;
 begin
@@ -614,7 +614,7 @@ end;
 
 function TPCSCConnector.GetResponseFromCard(const Command: string; var Data: string; var sw1, sw2: byte): boolean;
 var
-  Answer  : string;
+  Answer  : AnsiString;
   AnswerL : integer;
 begin
 Answer := GetResponseFromCard(Command + Data);
@@ -684,7 +684,7 @@ end;
 
 function TPCSCConnector.GSMReadBinary(const Offset, Length: integer; var Data: string): integer;
 var
-  Command  : string;
+  Command  : AnsiString;
   sw1, sw2 : byte;
 begin
   Command := GCReadBinary + Chr(Offset div 256) + Chr(Offset mod 256) + Chr(Length mod 256);
