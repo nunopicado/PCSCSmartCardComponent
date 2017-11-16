@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, WinSCard, WinSmCrd, SCardErr,
-  StdCtrls, PCSCConnector;
+  StdCtrls, SCConnector;
 
 type
   TForm1 = class(TForm)

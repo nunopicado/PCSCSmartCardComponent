@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BDE19B11-F041-4156-AA94-F96028E1B563}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="pkg\PCSCConnector.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="test\PCSCTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PCSCConnector">
+        <MSBuild Projects="pkg\PCSCConnector.dproj"/>
+    </Target>
+    <Target Name="PCSCConnector:Clean">
+        <MSBuild Projects="pkg\PCSCConnector.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PCSCConnector:Make">
+        <MSBuild Projects="pkg\PCSCConnector.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PCSCTest">
+        <MSBuild Projects="test\PCSCTest.dproj"/>
+    </Target>
+    <Target Name="PCSCTest:Clean">
+        <MSBuild Projects="test\PCSCTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PCSCTest:Make">
+        <MSBuild Projects="test\PCSCTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PCSCConnector;PCSCTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PCSCConnector:Clean;PCSCTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PCSCConnector:Make;PCSCTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

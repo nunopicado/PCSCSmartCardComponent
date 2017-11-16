@@ -1,29 +1,30 @@
-package PCSCConnectorD2007;
+package PCSCConnector;
 
 {$R *.res}
-{$R 'PCSCConnector.dcr'}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
 {$BOOLEVAL OFF}
-{$DEBUGINFO ON}
+{$DEBUGINFO OFF}
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
 {$LOCALSYMBOLS ON}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
-{$OPTIMIZATION ON}
+{$OPTIMIZATION OFF}
 {$OVERFLOWCHECKS OFF}
 {$RANGECHECKS OFF}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
-{$STACKFRAMES OFF}
+{$STACKFRAMES ON}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DESCRIPTION 'PCSC SmartCard Component D2007'}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
 {$IMPLICITBUILD ON}
 
 requires
@@ -31,6 +32,9 @@ requires
   vcl;
 
 contains
-  PCSCConnector in 'PCSCConnector.pas';
+  SCConnector in '..\scr\SCConnector.pas',
+  SCardErr in '..\scr\SCardErr.pas',
+  WinSCard in '..\scr\WinSCard.pas',
+  WinSmCrd in '..\scr\WinSmCrd.pas';
 
 end.

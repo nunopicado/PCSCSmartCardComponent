@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 380
   Top = 178
-  Width = 356
-  Height = 336
   Caption = 'Form1'
+  ClientHeight = 297
+  ClientWidth = 340
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -180,7 +180,7 @@ object Form1: TForm1
     OnReaderWaiting = pcscReaderWaiting
     OnReaderListChange = pcscReaderListChange
     OnError = pcscError
-    Left = 315
+    Left = 307
     Top = 5
   end
 end

@@ -40,7 +40,7 @@
 {                                                                  }
 {******************************************************************}
 
-unit PCSCConnector;
+unit SCConnector;
 
 interface
 
